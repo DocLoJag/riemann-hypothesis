@@ -42,19 +42,6 @@ Combinatorial Nullstellensatz (1999); Ball–Serra, Punctured combinatorial Null
 
 @[expose] public section
 
-/-! ## Partial derivatives of multivariate polynomials commute -/
-
-/-- The formal partial derivatives of a polynomial in several variables commute. -/
-lemma New.pderiv_comm {σ A : Type*} [CommRing A] (a b : σ) (p : MvPolynomial σ A) :
-    (p.pderiv b).pderiv a = (p.pderiv a).pderiv b := by
-  classical
-  ext m
-  -- Both coefficients are the same multiple of the coefficient of `p` at `m + eₐ + e_b`.
-  obtain rfl | h_ne := eq_or_ne a b
-  · rfl
-  · simp [MvPolynomial.coeff_pderiv, add_right_comm m (Finsupp.single a 1), h_ne, h_ne.symm,
-      mul_right_comm]
-
 /-! ## Polynomials in two covering sets of variables -/
 
 section PolynomialSpan

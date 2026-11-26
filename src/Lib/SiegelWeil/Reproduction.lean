@@ -139,7 +139,7 @@ lemma polyMatrixCoeff_eq_holMinorsPi_mul_conj (s : n → ℤˣ) (s' : n' → ℤ
     have h_neg {k : InfinitePlace E × n' × n} (hk : σ k ≠ 1) : pderiv k P = 0 :=
       pderiv_eq_zero_of_notMem_vars fun hk' ↦ hk (mem_supported.1 hP hk')
     by_cases hj : σ j = 1
-    · rw [New.pderiv_comm, h_neg (h.trans_eq hj), map_zero]
+    · rw [pderiv_comm, h_neg (h.trans_eq hj), map_zero]
     · rw [h_neg hj, map_zero]
   let t : ℂ := ∏ w : InfinitePlace E, principalMinor (u⁻¹ w) (fun k : n ↦ s k = 1) ^ ν w *
     principalMinor (u⁻¹ w) (fun k : n ↦ s k = -1) ^ c w
